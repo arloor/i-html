@@ -13,6 +13,8 @@
     <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
 
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,12 +39,12 @@
                     <hr>
 
                     <!--分类目录-->
-                   <div class="mulu">
+                   <div class="mulu" id="mulu">
                        <ul>
-                           <li><a href="#">日常记录</a></li>
-                           <li><a href="#">时间锦囊</a></li>
-                           <li><a href="#">纪念日</a></li>
-                           <li><a href="#">关于站长</a></li>
+                           <li><a href="servlet/daily" class="fenlei">日常记录</a></li>
+                           <li><a href="servlet/time" class="fenlei">时间锦囊</a></li>
+                           <li><a href="servlet/jinianri" class="fenlei">纪念日</a></li>
+                           <li><a href="servlet/about" class="fenlei">关于站长</a></li>
                        </ul>
                        <hr>
                    </div>
@@ -50,10 +52,10 @@
                     <!--文章列表-->
                     <div class="contentlist">
                         <ul>
-                            <li><a href="#">日常记录1</a></li>
-                            <li><a href="#">日常记录2</a></li>
-                            <li><a href="#">日常记录3</a></li>
-                            <li><a href="#">日常记录4</a></li>
+                            <li><a href="daily1">日常记录1</a></li>
+                            <li><a href="daily2">日常记录2</a></li>
+                            <li><a href="daily3">日常记录3</a></li>
+                            <li><a href="daily4">日常记录4</a></li>
                         </ul>
                         <br>
                     </div>
@@ -62,14 +64,80 @@
 
                 <div class="content-body col-xs-12 col-md-9" >
                     <div class="row">
-                        <article class="col-xs-12 col-md-10 col-md-offset-1">
+                        <div class="col-xs-12 col-md-10 col-md-offset-1" id="content">
                             <h1>测试文章</h1>
-                        </article>
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                            <h1>测试文章</h1>
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                            <h1>测试文章</h1>
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                            <h1>测试文章</h1>
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                            <h1>测试文章</h1>
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                            <h1>测试文章</h1>
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+                            <h1>测试文章</h1>
+                            <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        //-----------------------------------------------------------
+        //定义增加页面加载完成的操作
+        function addOnLoad(func){
+            var oldOnLoad=window.onload;
+            if(typeof oldOnLoad!='function'){
+                window.onload=func;
+            }else{
+                window.onload=function(){
+                    oldOnLoad();
+                    func();
+                }
+            }
+        }
+
+
+
+        //---------------------------------------------------------
+        //定义页面加载完成的操作
+        addOnLoad(addMuluAjianting);
+
+
+        //----------------------------------------------------------
+        function doAjaxFenlei(href) {
+                var req=new XMLHttpRequest();
+                req.open("GET",href,true);
+                req.send();
+                req.onreadystatechange=function () {
+                    if(req.readyState==4&&this.status==200){
+                        //document.getElementById("content").innerHTML=req.responseText;
+                        document.getElementById("content").innerHTML=req.responseText;
+                    }
+                }
+
+        }
+        function addMuluAjianting(){
+            var mulu=document.getElementById("mulu");
+            var fenleiAs=mulu.getElementsByClassName("fenlei");
+            //alert(fenleiAs.length);
+
+            for(var i=0;i<fenleiAs.length;i++){
+                var a=fenleiAs[i];
+                a.onclick=function () {
+                    doAjaxFenlei(this.href);
+                    return false;
+                }
+            }
+
+
+        }
+    </script>
 
 
 </body>

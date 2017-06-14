@@ -1,0 +1,17 @@
+
+
+div.main-body{
+    background-color: grey;
+    //background-image: url("image/circles-and-roundabouts.png.png");
+    padding-top: 10px;
+    font-family: "monospace";
+}
+div#content p{
+    font-size: 150%;
+    color: #0f0f0f;
+}
+
+div.content-body h1,h2,h3,h4,h5,h6{
+    font-family: "Adobe 黑体 Std R";
+}
+
